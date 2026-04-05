@@ -1,15 +1,9 @@
-// src/components/ProductCard.jsx
-// This component is responsible for displaying a single food item in our grid.
-// It receives a "product" object via props, which contains all the data fetched from the OpenFoodFacts API.
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 
 const ProductCard = ({ product }) => {
     const { addToCart } = useCart();
-    // We calculate the nutrition grade color automatically.
-    // The API gives us grades like 'a', 'b', 'c', 'd', 'e'. If it's missing or 'unknown', we map it to '?'.
     const rawGrade = product?.nutrition_grades?.toLowerCase();
     const isValidGrade = ['a', 'b', 'c', 'd', 'e'].includes(rawGrade);
     const nutritionGrade = isValidGrade ? rawGrade : '?';
@@ -26,7 +20,6 @@ const ProductCard = ({ product }) => {
         }
     };
 
-    // We assign a default image if the product doesn't have an 'image_url' to prevent broken UI if external placeholder links fail.
     const imageUrl = product.image_url || 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20style%3D%22background%3A%23eee%22%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23999%22%20font-family%3D%22sans-serif%22%20font-size%3D%2224%22%3ENo%20Image%3C%2Ftext%3E%3C%2Fsvg%3E';
 
     // We display energy in kcal. The API usually provides this inside nutriments.energy-kcal_100g.

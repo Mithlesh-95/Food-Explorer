@@ -1,4 +1,4 @@
-// src/components/Scanner.jsx
+import React, { useEffect, useRef, useState } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import { BrowserMultiFormatReader } from '@zxing/library';
 
@@ -26,7 +26,6 @@ const Scanner = ({ onScanSuccess, onScanFailure }) => {
                 setIsLoading(true);
                 setError(null);
 
-                // Small delay to ensure any previous camera instances are fully dead
                 await new Promise(resolve => setTimeout(resolve, 300));
                 if (!isMounted) return;
 
@@ -46,7 +45,6 @@ const Scanner = ({ onScanSuccess, onScanFailure }) => {
                 const stream = await Promise.race([streamPromise, timeoutPromise]);
 
                 if (!isMounted) {
-                    console.log("Scanner: Unmounted during initialization, stopping stream.");
                     stream.getTracks().forEach(track => track.stop());
                     return;
                 }
@@ -104,7 +102,6 @@ const Scanner = ({ onScanSuccess, onScanFailure }) => {
             if (streamRef.current) {
                 const tracks = streamRef.current.getTracks();
                 tracks.forEach(track => {
-                    console.log("Scanner: Stopping track", track.label);
                     track.stop();
                 });
                 streamRef.current = null;

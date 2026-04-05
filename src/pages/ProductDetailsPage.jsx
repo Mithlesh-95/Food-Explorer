@@ -1,7 +1,3 @@
-// src/pages/ProductDetailsPage.jsx
-// This page displays detailed information about a single product. 
-// It fetches data based on the barcode passed in the URL (e.g., /product/12345).
-
 import React, { useState, useEffect } from 'react';
 // useParams lets us read the dynamic parts of the URL.
 // useNavigate lets us programmatically go back to the previous page.
@@ -12,8 +8,7 @@ import { fetchProductByBarcode } from '../services/api.js';
 import { useCart } from '../context/CartContext.jsx';
 
 const ProductDetailsPage = () => {
-    // 1. Hook Initialization
-    const { barcode } = useParams(); // Extracts the 'barcode' string from the current URL
+    const { barcode } = useParams();
     const navigate = useNavigate(); // Used to trigger a "Back" action
     const [product, setProduct] = useState(null); // Holds the fetched product data
     const [isLoading, setIsLoading] = useState(true); // Loading state
@@ -22,7 +17,6 @@ const ProductDetailsPage = () => {
     const [isMock, setIsMock] = useState(false); // Tracks if we are using fallback data
     const { addToCart } = useCart(); // Destructure the addToCart function from our global context
 
-    // 2. Fetch Data on Mount
     useEffect(() => {
         const getProduct = async () => {
             try {
@@ -47,7 +41,6 @@ const ProductDetailsPage = () => {
         getProduct();
     }, [barcode]); // Re-run if the barcode URL changes
 
-    // 2.5 New: Save to History Effect
     useEffect(() => {
         if (product && barcode) {
             const saveToHistory = () => {
@@ -70,7 +63,6 @@ const ProductDetailsPage = () => {
         }
     }, [product, barcode]);
 
-    // 3. Helper Functions
     const handleAddToCart = () => {
         if (product) {
             addToCart(product);

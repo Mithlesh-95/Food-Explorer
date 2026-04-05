@@ -1,7 +1,3 @@
-// src/pages/HomePage.jsx
-// This is the primary page of our application where users can search, filter, and view products.
-// It integrates our external API functions (fetchProducts, fetchCategories) and React state.
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { fetchProducts, fetchCategories } from '../services/api.js';
 import ProductCard from '../components/ProductCard.jsx';
@@ -10,11 +6,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useDebounce } from '../hooks/useDebounce.js';
 
 const HomePage = () => {
-    // ------- 1. Component State Definitions -------
-    // products array holds the list of food items returned from the API
     const [products, setProducts] = useState([]);
 
-    // categories array holds the filter chips (Beverages, Snacks, etc.)
     const [categories, setCategories] = useState([]);
 
     const location = useLocation();
@@ -47,8 +40,6 @@ const HomePage = () => {
 
     const navigate = useNavigate();
 
-    // ------- 2. Fetching Initial Categories -------
-    // We use useEffect with an empty dependency array [] to run this ONLY ONCE when the page loads.
     useEffect(() => {
         const loadCategories = async () => {
             try {
@@ -63,7 +54,6 @@ const HomePage = () => {
         loadCategories();
     }, []); // Run once on mount
 
-    // ------- 3. Fetching Products -------
     const loadProducts = useCallback(async (isNewSearch = false) => {
         if (isLoading || (!hasMore && !isNewSearch)) return;
 
@@ -99,7 +89,6 @@ const HomePage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedSearchTerm, selectedCategory, sortOrder]);
 
-    // ------- 3.5 Infinite Scroll Intersection Observer -------
     const observer = useRef();
     const lastProductElementRef = useCallback((node) => {
         if (isLoading) return;
@@ -115,8 +104,6 @@ const HomePage = () => {
         if (node) observer.current.observe(node);
     }, [isLoading, hasMore, loadProducts]);
 
-    // ------- 4. Search Handler -------
-    // When a user presses enter on the search bar.
     const handleSearchSubmit = (e) => {
         e.preventDefault(); // Stop the form from refreshing the webpage
 

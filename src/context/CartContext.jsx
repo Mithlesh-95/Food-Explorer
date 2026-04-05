@@ -1,25 +1,11 @@
-// src/context/CartContext.jsx
-// This file sets up a global state management system using React's built-in Context API.
-// Without Context, we would have to pass cart data as "props" through every component (prop drilling).
-// The Context API allows any component in the app to access the cart directly.
-
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// 1. Create the Context
-// This creates an empty "container" for our cart data.
-// We can import this context in other files to read the data.
 export const CartContext = createContext();
 
-// 2. Create a Custom Hook
-// We create a helper function useCart() so that components don't have to import useContext AND CartContext.
-// They can just do: const { cart, addToCart } = useCart();
 export const useCart = () => {
     return useContext(CartContext);
 };
 
-// 3. Create the Provider Component
-// This component will wrap our entire application (usually inside main.jsx or App.jsx).
-// Any component inside this wrapper will have access to the Context.
 export const CartProvider = ({ children }) => {
     // We use useState to keep track of the items in the cart.
     // Initially, we check localStorage to see if there's saved cart data from a previous session.

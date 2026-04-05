@@ -1,15 +1,4 @@
-// src/services/api.js
-// This file centralizes all our API calls to OpenFoodFacts.
-// We strictly use the native browser `fetch` API and adhere to the provided Documentation endpoints.
-
-const BASE_URL = 'https://world.openfoodfacts.org';
-
-// --- MOCK DATA FALLBACKS ---
-// EMERGENCY INTERVIEW FAILOVER: 
-// The OpenFoodFacts `cgi/search.pl` and `category.json` endpoints are currently returning:
-// "503 Page temporarily unavailable - Our services are currently experiencing unusually high demand."
-// This completely blocks anonymous frontend fetches. 
-// We use these mock objects in the catch block so the React UI remains fully manipulable during the interview!
+// Mock data used when the OpenFoodFacts API is unreachable.
 const MOCK_CATEGORIES = [
     { name: "Snacks", id: "en:snacks", url: "https://world.openfoodfacts.org/category/snacks.json" },
     { name: "Beverages", id: "en:beverages", url: "https://world.openfoodfacts.org/category/beverages.json" },

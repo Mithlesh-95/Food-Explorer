@@ -1,8 +1,3 @@
-// src/components/Layout.jsx
-// This Layout component acts as the outer shell of our application.
-// We use it to ensure the Header and Bottom Navigation stay visible across all pages.
-// The different pages (Home, Product Detail) will be injected inside the <main> tag.
-
 import React, { useState, useCallback } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import Scanner from './Scanner.jsx';
@@ -40,14 +35,8 @@ const Layout = () => {
         // The div wrapper uses Tailwind classes to set base background, text color, and full width/height
         <div className="bg-background text-on-surface font-body min-h-screen selection:bg-primary-container relative">
 
-            {/* 
-        This is the fixed top application bar (Header).
-        We use 'fixed top-0' to stick it to the very top. 'backdrop-blur-xl' gives it an Apple-style frosted glass effect.
-        We ensure it floats above other content using 'z-50'.
-      */}
             <header className="fixed top-0 w-full z-50 bg-[#f7faf5]/80 backdrop-blur-xl flex justify-between items-center px-6 py-4 border-b border-outline-variant/10">
                 <div className="flex items-center gap-4">
-                    {/* Menu button. Uses active:scale-95 to make a tiny "pop" animation when clicked */}
                     <button
                         onClick={() => {
                             setIsDrawerOpen(true);
@@ -202,16 +191,7 @@ const Layout = () => {
                 </>
             )}
 
-            {/* 
-        The <main> tag holds the specific page contents.
-        We add padding to the top (pt-24) and bottom (pb-32) so content isn't hidden behind the fixed Header or Footer!
-      */}
             <main className="pt-24 pb-32 px-6 max-w-7xl mx-auto">
-                {/*
-          <Outlet /> is a special component from React Router.
-          It acts like a placeholder. When the user goes to the Homepage, the Homepage component swaps into this spot.
-          When the user goes to Product Details, the details swap into this spot!
-        */}
                 <Outlet />
             </main>
 
