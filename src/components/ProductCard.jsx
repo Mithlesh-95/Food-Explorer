@@ -48,6 +48,10 @@ const ProductCard = ({ product }) => {
                     /* The image scales up (scale-110) smoothly when hovering over the card, achieving a premium feel. */
                     className="w-full h-full object-contain mix-blend-multiply transition-transform group-hover:scale-110 duration-500"
                     src={imageUrl}
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://www.svgrepo.com/show/503463/package.svg';
+                    }}
                 />
 
                 {/* 
