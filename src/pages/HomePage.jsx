@@ -126,8 +126,8 @@ const HomePage = () => {
                     </div>
                     <div>
                         <p className="text-sm font-bold text-primary">Demo Mode Active</p>
-                        <p className="text-xs text-on-surface-variant opacity-80">
-                            The OpenFoodFacts API is currently unreachable. We are serving high-quality mock data for this demonstration.
+                        <p className="text-[11px] text-on-surface-variant leading-relaxed">
+                            Showing sample data due to temporary API issues.
                         </p>
                     </div>
                 </div>

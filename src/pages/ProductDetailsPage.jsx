@@ -130,8 +130,8 @@ const ProductDetailsPage = () => {
                     </div>
                     <div>
                         <p className="text-sm font-bold text-primary">Demo Mode Active</p>
-                        <p className="text-xs text-on-surface-variant opacity-80 font-medium">
-                            This product details are served from mock data because the live API is unreachable.
+                        <p className="text-[11px] text-on-surface-variant leading-relaxed">
+                            Showing sample data due to temporary API issues.
                         </p>
                     </div>
                 </div>
