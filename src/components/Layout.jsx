@@ -35,7 +35,7 @@ const Layout = () => {
         // The div wrapper uses Tailwind classes to set base background, text color, and full width/height
         <div className="bg-background text-on-surface font-body min-h-screen selection:bg-primary-container relative">
 
-            <header className="fixed top-0 w-full z-50 bg-[#f7faf5]/80 backdrop-blur-xl flex justify-between items-center px-6 py-4 border-b border-outline-variant/10">
+            <header className="fixed top-0 w-full z-50 bg-[#f7faf5]/90 backdrop-blur-xl flex justify-between items-center px-4 py-3 sm:px-6 sm:py-4 border-b border-outline-variant/10">
                 <div className="flex items-center gap-4">
                     <button
                         onClick={() => {
@@ -51,7 +51,7 @@ const Layout = () => {
                     {/* Main Title of the application */}
                     {/* Link lets the user click the title to return home */}
                     <Link to="/">
-                        <h1 className="text-emerald-900 font-extrabold tracking-tighter font-headline text-2xl">
+                        <h1 className="text-emerald-900 font-extrabold tracking-tighter font-headline text-xl sm:text-2xl">
                             Food Explorer
                         </h1>
                     </Link>
@@ -118,14 +118,14 @@ const Layout = () => {
                     ></div>
 
                     {/* Drawer Content */}
-                    <div className="fixed top-0 left-0 bottom-0 w-[80%] max-w-[320px] bg-white z-[70] shadow-2xl rounded-r-[2.5rem] p-8 flex flex-col animate-slide-in-left">
-                        <div className="flex items-center justify-between mb-12">
-                            <h2 className="font-headline font-extrabold text-2xl text-emerald-900 tracking-tighter">Food Explorer</h2>
+                    <div className="fixed top-0 left-0 bottom-0 w-[85%] max-w-[300px] bg-white z-[70] shadow-2xl rounded-r-[2rem] p-6 sm:p-8 flex flex-col animate-slide-in-left overflow-y-auto hide-scrollbar">
+                        <div className="flex items-center justify-between mb-8 sm:mb-12">
+                            <h2 className="font-headline font-extrabold text-xl sm:text-2xl text-emerald-900 tracking-tighter">Food Explorer</h2>
                             <button
                                 onClick={() => setIsDrawerOpen(false)}
-                                className="w-10 h-10 bg-surface-variant/50 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"
+                                className="w-8 h-8 sm:w-10 sm:h-10 bg-surface-variant/50 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"
                             >
-                                <span className="material-symbols-outlined">close</span>
+                                <span className="material-symbols-outlined text-lg">close</span>
                             </button>
                         </div>
 
@@ -178,12 +178,12 @@ const Layout = () => {
                             </div>
                         </div>
 
-                        <div className="mt-auto pt-8 border-t border-outline-variant/10">
-                            <div className="bg-surface-container-low p-6 rounded-3xl">
-                                <p className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant mb-2">About App</p>
-                                <p className="text-xs text-on-surface-variant leading-relaxed">
-                                    Version 1.0.4<br />
-                                    Built for premium food discovery using OpenFoodFacts API.
+                        <div className="mt-6 pt-6 border-t border-outline-variant/10">
+                            <div className="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/5">
+                                <p className="text-[9px] uppercase font-bold tracking-widest text-on-surface-variant/60 mb-2">System Info</p>
+                                <p className="text-[11px] text-on-surface-variant/80 leading-relaxed font-medium">
+                                    Version 1.0.5 • Stable<br />
+                                    OpenFoodFacts Engine v3.1
                                 </p>
                             </div>
                         </div>
@@ -191,7 +191,7 @@ const Layout = () => {
                 </>
             )}
 
-            <main className="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+            <main className="pt-20 sm:pt-24 pb-28 sm:pb-32 px-4 sm:px-6 max-w-7xl mx-auto">
                 <Outlet />
             </main>
 
@@ -199,35 +199,35 @@ const Layout = () => {
         This is the fixed bottom navigation bar menu.
         Like the header, it uses 'fixed bottom-0' to stick to the base of the screen.
       */}
-            <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-8 pt-4 bg-[#f7faf5]/90 backdrop-blur-2xl z-50 rounded-t-3xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+            <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 pb-6 pt-3 sm:pb-8 sm:pt-4 bg-background/90 backdrop-blur-2xl z-50 rounded-t-[2rem] shadow-[0_-8px_32px_rgba(0,0,0,0.06)] border-t border-outline-variant/5">
 
                 {/* Home Button Navigation link */}
-                <Link to="/" className={`flex flex-col items-center justify-center rounded-2xl px-6 py-2 transition-all active:scale-90 duration-300 ${isHome ? 'bg-emerald-100 text-emerald-900' : 'text-emerald-700/50 hover:text-emerald-900'}`}>
-                    <span className="material-symbols-outlined" style={{ fontVariationSettings: isHome ? "'FILL' 1" : "" }}>home</span>
-                    <span className="font-body text-[11px] font-semibold uppercase tracking-wider mt-1">Home</span>
+                <Link to="/" className={`flex flex-col items-center justify-center rounded-2xl px-4 sm:px-6 py-2 transition-all active:scale-90 duration-300 ${isHome ? 'bg-emerald-100 text-emerald-900' : 'text-emerald-700/50 hover:text-emerald-900'}`}>
+                    <span className="material-symbols-outlined text-xl sm:text-2xl" style={{ fontVariationSettings: isHome ? "'FILL' 1" : "" }}>home</span>
+                    <span className="font-body text-[9px] sm:text-[11px] font-bold uppercase tracking-wider mt-1">Home</span>
                 </Link>
 
                 {/* Categories Button Navigation link */}
-                <Link to="/categories" className={`flex flex-col items-center justify-center px-6 py-2 transition-all active:scale-90 duration-300 ${isCategories ? 'bg-emerald-100 text-emerald-900 rounded-2xl' : 'text-emerald-700/50 hover:text-emerald-900'}`}>
-                    <span className="material-symbols-outlined" style={{ fontVariationSettings: isCategories ? "'FILL' 1" : "" }}>grid_view</span>
-                    <span className="font-body text-[11px] font-semibold uppercase tracking-wider mt-1">Categories</span>
+                <Link to="/categories" className={`flex flex-col items-center justify-center px-4 sm:px-6 py-2 transition-all active:scale-90 duration-300 ${isCategories ? 'bg-emerald-100 text-emerald-900 rounded-2xl' : 'text-emerald-700/50 hover:text-emerald-900'}`}>
+                    <span className="material-symbols-outlined text-xl sm:text-2xl" style={{ fontVariationSettings: isCategories ? "'FILL' 1" : "" }}>grid_view</span>
+                    <span className="font-body text-[9px] sm:text-[11px] font-bold uppercase tracking-wider mt-1">Categories</span>
                 </Link>
 
                 {/* Log (Cart) Button Navigation link */}
-                <Link to="/cart" className={`flex flex-col items-center justify-center px-6 py-2 transition-all active:scale-90 duration-300 relative ${isCart ? 'bg-emerald-100 text-emerald-900 rounded-2xl' : 'text-emerald-700/50 hover:text-emerald-900'}`}>
-                    <span className="material-symbols-outlined" style={{ fontVariationSettings: isCart ? "'FILL' 1" : "" }}>inventory_2</span>
+                <Link to="/cart" className={`flex flex-col items-center justify-center px-4 sm:px-6 py-2 transition-all active:scale-90 duration-300 relative ${isCart ? 'bg-emerald-100 text-emerald-900 rounded-2xl' : 'text-emerald-700/50 hover:text-emerald-900'}`}>
+                    <span className="material-symbols-outlined text-xl sm:text-2xl" style={{ fontVariationSettings: isCart ? "'FILL' 1" : "" }}>inventory_2</span>
                     {cartCount > 0 && (
-                        <span className="absolute top-2 right-4 bg-primary text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-white">
+                        <span className="absolute top-1 right-2 sm:top-2 sm:right-4 bg-primary text-white text-[8px] sm:text-[9px] font-bold w-3 h-3 sm:w-4 sm:h-4 rounded-full flex items-center justify-center ring-2 ring-white">
                             {cartCount}
                         </span>
                     )}
-                    <span className="font-body text-[11px] font-semibold uppercase tracking-wider mt-1">Log</span>
+                    <span className="font-body text-[9px] sm:text-[11px] font-bold uppercase tracking-wider mt-1">Log</span>
                 </Link>
 
                 {/* Scanner Modal Trigger Button */}
-                <button onClick={() => setIsScannerOpen(true)} className="flex flex-col items-center justify-center text-emerald-700/50 px-6 py-2 hover:text-emerald-900 active:scale-90 transition-transform duration-300">
-                    <span className="material-symbols-outlined">barcode_scanner</span>
-                    <span className="font-body text-[11px] font-semibold uppercase tracking-wider mt-1">Scanner</span>
+                <button onClick={() => setIsScannerOpen(true)} className="flex flex-col items-center justify-center text-emerald-700/50 px-4 sm:px-6 py-2 hover:text-emerald-900 active:scale-90 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-xl sm:text-2xl">barcode_scanner</span>
+                    <span className="font-body text-[9px] sm:text-[11px] font-bold uppercase tracking-wider mt-1">Scanner</span>
                 </button>
             </nav>
 

@@ -136,7 +136,7 @@ const HomePage = () => {
             {/* 5A. Hero Search Section (Matched to Stitch Design) */}
             <section className="mb-12">
                 <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="font-headline font-extrabold text-4xl md:text-5xl tracking-tight text-on-surface mb-6">
+                    <h2 className="font-headline font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-on-surface mb-4 sm:mb-6 leading-[1.1]">
                         Discover the alchemy in your <span className="text-primary italic">ingredients</span>.
                     </h2>
 
@@ -146,7 +146,7 @@ const HomePage = () => {
                                 <span className="material-symbols-outlined text-on-surface-variant mr-3">search</span>
                                 <input
                                     aria-label="Search items"
-                                    className="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-on-surface-variant/60 font-medium outline-none"
+                                    className="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-on-surface-variant/60 font-medium outline-none text-sm sm:text-base"
                                     placeholder={searchMode === 'name' ? "Search by product name..." : "Enter barcode numbers..."}
                                     type="text"
                                     value={searchTerm}
@@ -159,16 +159,16 @@ const HomePage = () => {
                                 <button
                                     type="button"
                                     onClick={() => setSearchMode('name')}
-                                    className={`${searchMode === 'name' ? 'bg-white text-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'} px-4 py-2 rounded-full text-sm font-bold transition-colors`}
+                                    className={`${searchMode === 'name' ? 'bg-white text-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'} px-3 py-1.5 rounded-full text-xs font-bold transition-colors`}
                                 >
                                     Name
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setSearchMode('barcode')}
-                                    className={`${searchMode === 'barcode' ? 'bg-white text-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'} px-4 py-2 rounded-full text-sm font-semibold transition-colors flex items-center gap-2`}
+                                    className={`${searchMode === 'barcode' ? 'bg-white text-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'} px-3 py-1.5 rounded-full text-xs font-semibold transition-colors flex items-center gap-1`}
                                 >
-                                    <span className="material-symbols-outlined text-sm">barcode_scanner</span>
+                                    <span className="material-symbols-outlined text-xs">barcode_scanner</span>
                                     Barcode
                                 </button>
                             </div>
@@ -177,7 +177,7 @@ const HomePage = () => {
                 </div>
 
                 {/* 5B. Categories Horizontal Scroll (Sticky Glassmorphism Nav) */}
-                <div className="flex overflow-x-auto hide-scrollbar gap-3 py-4 items-center sticky top-20 z-40 bg-background/90 backdrop-blur-md rounded-b-2xl shadow-[0_12px_24px_-12px_rgba(0,0,0,0.05)] px-2 -mx-2 mb-6">
+                <div className="flex overflow-x-auto hide-scrollbar gap-2 sm:gap-3 py-3 sm:py-4 items-center sticky top-16 sm:top-20 z-40 bg-background/90 backdrop-blur-md rounded-b-2xl shadow-[0_8px_16px_-8px_rgba(0,0,0,0.05)] px-1 sm:px-2 -mx-1 sm:-mx-2 mb-4 sm:mb-6">
                     {/* Default 'All Products' chip */}
                     <button
                         onClick={() => setSelectedCategory('')}
