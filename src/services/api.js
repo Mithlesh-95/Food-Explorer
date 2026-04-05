@@ -49,7 +49,7 @@ const MOCK_PRODUCTS = {
             product_name: "Apple Juice",
             brands: "Organic Farms",
             categories: "Beverages, Fruit juices, Apple juices",
-            image_url: "https://www.svgrepo.com/show/475147/apple.svg",
+            image_url: "/apple.svg",
             nutrition_grades: "b",
             ingredients_text: "Organic apple juice from concentrate.",
             generic_name: "100% Pure Organic Apple Juice",
@@ -60,7 +60,7 @@ const MOCK_PRODUCTS = {
             product_name: "White Quinoa",
             brands: "Natural Choice",
             categories: "Plant-based foods, Cereals, Cereal grains, Quinoas",
-            image_url: "https://www.svgrepo.com/show/244304/wheat-cereal.svg",
+            image_url: "/quinoa.svg",
             nutrition_grades: "a",
             ingredients_text: "100% white quinoa.",
             generic_name: "Organic White Quinoa Grain",
@@ -107,15 +107,33 @@ export const fetchProducts = async (searchTerm = '', category = '', page = 1, so
     } catch (error) {
         console.warn(`OpenFoodFacts API Fetch Failed. Reason: ${error.message}`);
 
-        // --- CLIENT-SIDE SORTING FOR MOCK DATA ---
+        // --- CLIENT-SIDE FILTERING & SORTING FOR MOCK DATA ---
         let mockResults = [...MOCK_PRODUCTS.products];
 
+        // 1. Initial Filtering (Search Term)
+        if (searchTerm) {
+            mockResults = mockResults.filter(p =>
+                p.product_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                p.id.includes(searchTerm)
+            );
+        }
+
+        // 2. Category Filtering (Critical for Demo)
+        if (category) {
+            // "en:beverages" -> "beverages"
+            const categoryMatch = category.replace('en:', '').toLowerCase();
+            mockResults = mockResults.filter(p =>
+                p.categories.toLowerCase().includes(categoryMatch)
+            );
+        }
+
+        // 3. Sorting logic
         if (sort_by === 'product_name') {
             mockResults.sort((a, b) => a.product_name.localeCompare(b.product_name));
         } else if (sort_by === '-product_name') {
             mockResults.sort((a, b) => b.product_name.localeCompare(a.product_name));
         } else if (sort_by === 'nutriscore_score') {
-            // A = 0, E = 4. Ascending score = Best first.
+            // A-E comparison
             mockResults.sort((a, b) => a.nutrition_grades.localeCompare(b.nutrition_grades));
         } else if (sort_by === '-nutriscore_score') {
             mockResults.sort((a, b) => b.nutrition_grades.localeCompare(a.nutrition_grades));
