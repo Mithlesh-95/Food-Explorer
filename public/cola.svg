@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff0f0"/>
+      <stop offset="100%" stop-color="#ffe4e4"/>
+    </linearGradient>
+    <linearGradient id="can" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e60000"/>
+      <stop offset="20%" stop-color="#ff1a1a"/>
+      <stop offset="80%" stop-color="#cc0000"/>
+      <stop offset="100%" stop-color="#990000"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cccccc"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#999999"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg2)"/>
+  
+  <!-- Can Body -->
+  <rect x="140" y="90" width="120" height="220" rx="10" fill="url(#can)"/>
+  
+  <!-- Can Top/Bottom Silver Rims -->
+  <ellipse cx="200" cy="90" rx="55" ry="12" fill="url(#silver)"/>
+  <rect x="145" y="85" width="110" height="15" fill="url(#silver)"/>
+  <ellipse cx="200" cy="305" rx="55" ry="10" fill="url(#silver)"/>
+  
+  <!-- Details / Text -->
+  <g transform="translate(160, 250) rotate(-90)">
+    <text x="0" y="0" font-family="'Helvetica Neue', serif" font-style="italic" font-weight="bold" font-size="44" fill="#ffffff" letter-spacing="-1">Coca-Cola</text>
+  </g>
+  <text x="235" y="280" font-family="'Helvetica Neue', sans-serif" font-weight="bold" font-size="10" fill="#ffffff" transform="rotate(-90 235 280)">ORIGINAL TASTE</text>
+  
+  <!-- Shadow -->
+  <ellipse cx="200" cy="325" rx="70" ry="12" fill="rgba(0,0,0,0.1)"/>
+</svg>

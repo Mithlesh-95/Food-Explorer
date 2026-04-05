@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e7"/>
+      <stop offset="100%" stop-color="#fdf4df"/>
+    </linearGradient>
+    <linearGradient id="jar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5a2b"/>
+      <stop offset="100%" stop-color="#5c3a21"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  
+  <!-- Jar Body -->
+  <path d="M 120 180 Q 120 150 150 150 L 250 150 Q 280 150 280 180 L 290 320 Q 290 350 260 350 L 140 350 Q 110 350 110 320 Z" fill="url(#jar)" />
+  
+  <!-- Lid -->
+  <rect x="130" y="110" width="140" height="40" rx="5" fill="#fcfcfc" stroke="#dddddd" stroke-width="2"/>
+  <rect x="130" y="120" width="140" height="5" fill="#eeeeee"/>
+  
+  <!-- Label -->
+  <rect x="115" y="200" width="170" height="80" fill="#ffffff" rx="2"/>
+  <text x="200" y="240" font-family="'Helvetica Neue', sans-serif" font-weight="900" font-size="28" fill="#df2020" text-anchor="middle" letter-spacing="-1">nutella</text>
+  <text x="200" y="260" font-family="'Helvetica Neue', sans-serif" font-weight="bold" font-size="12" fill="#8b5a2b" text-anchor="middle">HAZELNUT SPREAD</text>
+  
+  <!-- Shadow -->
+  <ellipse cx="200" cy="360" rx="90" ry="15" fill="rgba(0,0,0,0.1)"/>
+</svg>
