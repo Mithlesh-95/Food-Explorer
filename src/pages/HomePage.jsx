@@ -221,7 +221,9 @@ const HomePage = () => {
                         >
                             <option value="">Popularity</option>
                             <option value="product_name">Name (A-Z)</option>
-                            <option value="nutriscore_score">Nutri-Score</option>
+                            <option value="-product_name">Name (Z-A)</option>
+                            <option value="nutriscore_score">Nutri-Score (Best First)</option>
+                            <option value="-nutriscore_score">Nutri-Score (Worst First)</option>
                         </select>
                     </div>
                 </div>

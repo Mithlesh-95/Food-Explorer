@@ -43,6 +43,28 @@ const MOCK_PRODUCTS = {
             ingredients_text: "Carbonated water, sugar, color (caramel E150d), acid (phosphoric acid), natural flavorings including caffeine.",
             generic_name: "Carbonated soft drink with plant extracts",
             nutriments: { "energy-kcal_100g": 42, "fat_100g": 0, "saturated-fat_100g": 0, "carbohydrates_100g": 10.6, "sugars_100g": 10.6, "fiber_100g": 0, "proteins_100g": 0, "salt_100g": 0 }
+        },
+        {
+            id: "mock_apple",
+            product_name: "Apple Juice",
+            brands: "Organic Farms",
+            categories: "Beverages, Fruit juices, Apple juices",
+            image_url: "https://static.openfoodfacts.org/images/products/322/247/000/1234/front_en.12.400.jpg",
+            nutrition_grades: "b",
+            ingredients_text: "Organic apple juice from concentrate.",
+            generic_name: "100% Pure Organic Apple Juice",
+            nutriments: { "energy-kcal_100g": 45, "fat_100g": 0.1, "saturated-fat_100g": 0, "carbohydrates_100g": 11, "sugars_100g": 10, "fiber_100g": 0.2, "proteins_100g": 0.1, "salt_100g": 0.01 }
+        },
+        {
+            id: "mock_quinoa",
+            product_name: "White Quinoa",
+            brands: "Natural Choice",
+            categories: "Plant-based foods, Cereals, Cereal grains, Quinoas",
+            image_url: "https://static.openfoodfacts.org/images/products/841/000/000/0001/front_en.1.400.jpg",
+            nutrition_grades: "a",
+            ingredients_text: "100% white quinoa.",
+            generic_name: "Organic White Quinoa Grain",
+            nutriments: { "energy-kcal_100g": 368, "fat_100g": 6.1, "saturated-fat_100g": 0.7, "carbohydrates_100g": 57.2, "sugars_100g": 0, "fiber_100g": 7, "proteins_100g": 14.1, "salt_100g": 0.01 }
         }
     ]
 };
@@ -70,7 +92,7 @@ export const fetchProducts = async (searchTerm = '', category = '', page = 1, so
         url = `${BASE_URL}/category/${encodeURIComponent(category)}.json?page=${page}`;
         if (sort_by) url += `&sort_by=${sort_by}`;
     } else {
-        // Default list if nothing is selected. We'll use the search endpoint empty to fetch random/latest defaults.
+        // Default list if nothing is selected.
         url = `${BASE_URL}/cgi/search.pl?search_terms=&json=true&page=${page}`;
         if (sort_by) url += `&sort_by=${sort_by}`;
     }

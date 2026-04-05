@@ -121,6 +121,12 @@ const ProductDetailsPage = () => {
     // Make an array of labels safely
     const labels = product.labels ? product.labels.split(',').slice(0, 3) : [];
 
+    // 5.5 Advanced Health Badge Detection
+    const analysisTags = product.ingredients_analysis_tags || [];
+    const isVegan = analysisTags.includes('en:vegan');
+    const isVegetarian = analysisTags.includes('en:vegetarian');
+    const isGlutenFree = product.labels_tags?.includes('en:gluten-free') || product.ingredients_text?.toLowerCase().includes('gluten free');
+
     // 6. Final JSX Render (Heavily styled exactly like the Stitch design)
     return (
         <div className="animate-fade-in -mt-24 pt-20">
@@ -187,17 +193,29 @@ const ProductDetailsPage = () => {
                     {/* Health Labels & Nutrition Grade */}
                     <div className="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm flex flex-wrap items-center justify-between gap-6">
                         <div className="flex flex-wrap gap-3">
+                            {isVegan && (
+                                <span className="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full font-label text-xs font-black uppercase tracking-wider border border-emerald-200 flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-sm">potted_plant</span>
+                                    100% Vegan
+                                </span>
+                            )}
+                            {isGlutenFree && (
+                                <span className="px-4 py-2 bg-amber-100 text-amber-800 rounded-full font-label text-xs font-black uppercase tracking-wider border border-amber-200 flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-sm">eco</span>
+                                    Gluten Free
+                                </span>
+                            )}
                             {labels.length > 0 ? (
                                 labels.map((lbl, idx) => (
                                     <span key={idx} className="px-4 py-2 bg-primary-container text-on-primary-container rounded-full font-label text-xs font-bold uppercase tracking-wider">
                                         {lbl.trim()}
                                     </span>
                                 ))
-                            ) : (
+                            ) : (!isVegan && !isGlutenFree && (
                                 <span className="px-4 py-2 bg-surface-variant text-on-surface-variant rounded-full font-label text-xs font-bold uppercase tracking-wider">
                                     No Labels Available
                                 </span>
-                            )}
+                            ))}
                         </div>
 
                         <div className="flex items-center gap-4">

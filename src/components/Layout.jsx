@@ -167,6 +167,28 @@ const Layout = () => {
                             </Link>
                         </div>
 
+                        <div className="mt-8">
+                            <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-on-surface-variant/50 px-4 mb-4">Quick Filter</p>
+                            <div className="space-y-1">
+                                {[
+                                    { name: 'Beverages', id: 'en:beverages', icon: 'local_drink' },
+                                    { name: 'Snacks', id: 'en:snacks', icon: 'cookie' },
+                                    { name: 'Dairy', id: 'en:dairies', icon: 'egg' },
+                                    { name: 'Chocolates', id: 'en:chocolates', icon: 'bakery_dining' }
+                                ].map(cat => (
+                                    <Link
+                                        key={cat.id}
+                                        to={`/?category=${cat.id}`}
+                                        onClick={() => setIsDrawerOpen(false)}
+                                        className="flex items-center gap-4 p-4 rounded-2xl text-on-surface-variant hover:bg-emerald-50 hover:text-emerald-900 transition-all text-sm font-medium"
+                                    >
+                                        <span className="material-symbols-outlined text-lg">{cat.icon}</span>
+                                        {cat.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
                         <div className="mt-auto pt-8 border-t border-outline-variant/10">
                             <div className="bg-surface-container-low p-6 rounded-3xl">
                                 <p className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant mb-2">About App</p>
