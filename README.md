@@ -1,38 +1,91 @@
-# Food Product Explorer
+# 🥗 Food Explorer
 
-## Overview
-This is a web application built as an assignment to explore food products using the OpenFoodFacts API. 
+**A Premium Food Discovery & Nutrition Tracking Application**
 
-## Features Implemented
-- **Homepage:** Lists food products fetched from the OpenFoodFacts API using infinite scroll.
-- **Search (Name):** Allows searching specific products by typing their name in the Hero search bar.
-- **Search (Barcode):** By switching to Barcode mode, users can input a barcode and directly navigate to the product detail page.
-- **Category Filter:** Clicking on a category chip (e.g., Beverages) filters the API results in real-time.
-- **Sorting:** Allows sorting products by Name (A-Z) or Nutri-score.
-- **Product Details:** A separate page (`/product/:barcode`) showing the high-resolution image, ingredients, explicit nutritional value tables, and health labels (like Vegan, Gluten-free).
-- **Cart Context (Bonus):** A global state was built using the native React Context API (no external libraries) allowing users to add an item to their cart from the detail page, maintaining it in `localStorage`.
+> **Time Taken:** 5 Days  
+> **Repository:** [https://github.com/Mithlesh-95/Food-Explorer.git](https://github.com/Mithlesh-95/Food-Explorer.git)
 
-## Method & Architecture
-This application primarily uses:
-- **ReactJS (Vite framework):** A fast modern React ecosystem. 
-- **Tailwind CSS:** Used exclusively for styling to keep a utility-first methodology. It integrates directly with standard CSS files.
-- **React Router DOM:** Handling client-side routing between the Home Page and the Details Page without page reloading.
-- **React Context API:** Handles application state (specifically the Cart) seamlessly across all child components globally.
-- **Native Fetch API:** All API interaction with OpenFoodFacts is handled cleanly using asynchronous `fetch()` calls. 
+---
 
-### Why this Tech Stack?
-- **Vite & React:** Faster hot-module reloading and native ES Module support compared to Create React App.
-- **Context API vs Redux:** Redux can be overkill for a very simple cart state. The Context API paired with `useReducer` or `useState` is far more scalable and standard for small-to-medium size assignments.
-- **Native Fetch:** Avoids unnecessarily bloating the `node_modules` with libraries like Axios when the browser's native capabilities are sufficient.
+## 🚀 Project Overview
+Food Explorer is a high-performance React application designed to help users discover detailed nutritional information about food products through an intuitive barcode scanning interface. Built as a technical assignment, it emphasizes **robust real-world API integration**, **advanced camera lifecycle management**, and a **premium, glassmorphism-inspired UI/UX**.
 
-## Time Taken
-Approximate completion time: **3-4 hours**, mainly optimizing the seamless CSS grid representations, structuring the dynamic routing, and perfecting the fetch algorithms to map OpenFoodFacts data keys securely.
+## ✨ Key Features
 
-## How to Run Locally
-1. Ensure Node.js is installed.
-2. In the project directory, run:
-   ```bash
-   npm install
-   npm run dev
-   ```
-3. Open `http://localhost:5173`.
+### 🔍 Live Barcode Scanner
+- **Direct Implementation:** Uses `@zxing/library` for high-speed, direct-to-video barcode detection.
+- **Robust Hardware Control:** Custom-built manual stream management ensures the camera hardware is **immediately released** upon scan success or modal closure, preventing "camera-still-on" issues common in standard libraries.
+- **Initialization Watchdog:** A 10-second timeout guard prevents UI hangs during hardware initialization.
+- **Manual Fallback:** A text-entry fallback ensures the app remains usable even if the user's camera has poor focus or lighting.
+
+### 🍱 Product Discovery & Details
+- **OpenFoodFacts Integration:** Real-time data fetching for over 1M+ products.
+- **Intelligent Fallback:** A "Demo Mode" automatically activates when the external API is unreachable, providing high-quality mock data so the app remains fully functional for reviewers.
+- **Nutritional Grading:** Visual Nutri-Score indicators (A-E) for quick health assessment.
+
+### 🛒 Daily Log (Cart System)
+- **Real-time Tracking:** Quantities and nutritional totals update instantly as items are added.
+- **Persistence:** All log data is saved to `localStorage`, ensuring user data survives page refreshes.
+
+### 📜 Scan History
+- **Automatic Logging:** Every product viewed or scanned is added to a persistent "Scan History," allowing users to re-visit findings without re-scanning.
+
+### 💎 Premium UI/UX
+- **Modern Aesthetics:** Tailored HSL color palettes, glassmorphism headers, and smooth Tailwind animations (`scan-line`, `slide-in`, `fade-in`).
+- **Responsive Design:** A mobile-first approach that scales beautifully to tablet and desktop.
+- **Interactive Navigation:** Global bottom bar and a functional hamburger side-drawer.
+
+---
+
+## 🛠️ Technology Stack
+- **Framework:** React 18 (Vite)
+- **Styling:** Tailwind CSS
+- **Barcode Decoding:** `@zxing/library`
+- **Routing:** React Router v6
+- **State Management:** Context API (Cart & History)
+- **Icons:** Google Material Symbols
+- **API:** OpenFoodFacts JSON API
+
+---
+
+## ⚙️ Installation & Running
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Mithlesh-95/Food-Explorer.git
+cd food-explorer
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Run the development server
+```bash
+npm run dev
+```
+
+### 4. Build for production
+```bash
+npm run build
+```
+
+---
+
+## 🧠 Design Decisions & Technical Challenges
+
+### 1. Why ZXing over native browser libs?
+Standard libraries like `html5-qrcode` often handle the camera stream internally, leading to race conditions where the camera light stays on after the component unmounts. I chose a **direct-to-video** approach with `@zxing/library` to gain absolute control over the `MediaStream` object. This allowed for explicit track termination in the React `useEffect` cleanup.
+
+### 2. Resilience via Demo Mode
+APIs like OpenFoodFacts can sometimes be slow or rate-limited. I implemented the `isMock` flag architecture in the API service. If a fetch fails, the app doesn't break; instead, it seamlessly transitions into a polished "Demo Mode" with a visible banner, ensuring the interviewer can always see the app's potential.
+
+### 3. Navigation & Context
+Using the **Context API** for the Cart/Log was a deliberate choice over heavier libraries like Redux. It provides clean, performant state sharing for this specific use case without adding unnecessary boilerplate or bundle size.
+
+---
+
+## 👤 Development 
+**Built by Mithlesh**  
+*Completed for the Technical Interview Assignment*
