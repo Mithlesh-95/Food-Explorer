@@ -236,25 +236,25 @@ const Layout = () => {
         It sits at the very z-axis top of the app using z-[100] and covers the screen.
       */}
             {isScannerOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm px-4 animate-fade-in">
-                    <div className="bg-surface-container-lowest w-full max-w-sm rounded-[2.5rem] p-8 shadow-2xl relative border border-outline-variant/20 flex flex-col items-center">
-                        <button onClick={() => setIsScannerOpen(false)} className="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface p-2 bg-surface-variant rounded-full active:scale-95 transition-all text-sm leading-none flex items-center justify-center">
-                            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md px-4 py-6 animate-fade-in">
+                    <div className="bg-surface-container-lowest w-full max-w-sm max-h-full overflow-y-auto hide-scrollbar rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-8 shadow-2xl relative border border-outline-variant/20 flex flex-col items-center">
+                        <button onClick={() => setIsScannerOpen(false)} className="absolute top-3 right-3 sm:top-5 sm:right-5 text-on-surface-variant hover:text-on-surface p-2.5 bg-surface-variant/80 rounded-full active:scale-90 transition-all z-10 shadow-sm">
+                            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>close</span>
                         </button>
 
-                        <div className="w-16 h-16 bg-primary-container text-primary rounded-2xl flex items-center justify-center mb-4 mt-2 shadow-inner">
-                            <span className="material-symbols-outlined" style={{ fontSize: '32px' }}>qr_code_scanner</span>
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-container text-primary rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mt-1 sm:mt-2 shadow-inner">
+                            <span className="material-symbols-outlined" style={{ fontSize: '28px' }}>qr_code_scanner</span>
                         </div>
 
-                        <h2 className="font-headline font-bold text-2xl text-on-surface mb-2 text-center">Live Scanner</h2>
-                        <p className="text-on-surface-variant text-center text-sm mb-6 px-4">
+                        <h2 className="font-headline font-bold text-xl sm:text-2xl text-on-surface mb-1 sm:mb-2 text-center">Live Scanner</h2>
+                        <p className="text-on-surface-variant text-center text-xs sm:text-sm mb-4 sm:mb-6 px-2 sm:px-4 leading-relaxed">
                             Point your camera at a product barcode to automatically discover its details.
                         </p>
 
                         {/* 
                           We embed our Live Scanner Component here. 
                         */}
-                        <div className="w-full min-h-[300px] mb-6">
+                        <div className="w-full min-h-[220px] sm:min-h-[300px] mb-4 sm:mb-6 rounded-2xl overflow-hidden bg-black/5">
                             <Scanner onScanSuccess={handleSuccessfulScan} />
                         </div>
 
