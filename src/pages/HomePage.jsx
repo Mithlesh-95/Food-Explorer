@@ -177,40 +177,49 @@ const HomePage = () => {
                 </div>
 
                 {/* 5B. Categories Horizontal Scroll (Sticky Glassmorphism Nav) */}
-                <div className="flex overflow-x-auto hide-scrollbar gap-2 sm:gap-3 py-3 sm:py-4 items-center sticky top-16 sm:top-20 z-40 bg-background/90 backdrop-blur-md rounded-b-2xl shadow-[0_8px_16px_-8px_rgba(0,0,0,0.05)] px-1 sm:px-2 -mx-1 sm:-mx-2 mb-4 sm:mb-6">
-                    {/* Default 'All Products' chip */}
-                    <button
-                        onClick={() => setSelectedCategory('')}
-                        aria-pressed={selectedCategory === ''}
-                        className={`${selectedCategory === '' ? 'bg-primary-container text-on-primary-container ring-2 ring-primary/50 ring-offset-2 ring-offset-background' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-container-high focus-visible:ring-2 focus-visible:ring-primary'} px-6 py-2.5 rounded-full font-semibold text-sm whitespace-nowrap transition-all active:scale-95`}
-                    >
-                        All Products
-                    </button>
-
-                    {categories.map((cat) => (
+                <div className="sticky top-16 sm:top-20 z-40 bg-background/90 backdrop-blur-md rounded-b-2xl shadow-[0_8px_16px_-8px_rgba(0,0,0,0.05)] -mx-1 sm:-mx-2 mb-4 sm:mb-6 flex items-center justify-between border-b border-outline-variant/10">
+                    {/* Scrollable Categories Section */}
+                    <div className="flex overflow-x-auto hide-scrollbar gap-2 sm:gap-3 py-3 sm:py-4 items-center flex-1 px-1 sm:px-2">
+                        {/* Default 'All Products' chip */}
                         <button
-                            key={cat.id}
-                            onClick={() => setSelectedCategory(cat.id)}
-                            aria-pressed={selectedCategory === cat.id}
-                            className={`${selectedCategory === cat.id ? 'bg-primary-container text-on-primary-container ring-2 ring-primary/50 ring-offset-2 ring-offset-background' : 'bg-surface-variant text-on-surface-variant hover:bg-surface-container-high focus-visible:ring-2 focus-visible:ring-primary'} px-6 py-2.5 rounded-full font-semibold text-sm whitespace-nowrap transition-all outline-none`}
+                            onClick={() => setSelectedCategory('')}
+                            aria-pressed={!selectedCategory}
+                            className={`flex-shrink-0 px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 border ${!selectedCategory
+                                ? 'bg-primary text-white shadow-lg shadow-primary/20 border-primary'
+                                : 'bg-surface-container-high border-transparent text-on-surface-variant hover:bg-surface-variant'
+                                }`}
                         >
-                            {cat.name}
+                            All Products
                         </button>
-                    ))}
 
-                    {/* 5C. Sorting Dropdown Tool */}
-                    <div className="ml-auto pl-4 border-l border-outline-variant/30 flex items-center gap-2">
-                        <span className="text-sm font-bold text-on-surface-variant">Sort:</span>
+                        {/* Dynamic category chips */}
+                        {categories.map((cat) => (
+                            <button
+                                key={cat.id}
+                                onClick={() => setSelectedCategory(cat.id)}
+                                aria-pressed={selectedCategory === cat.id}
+                                className={`flex-shrink-0 px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 border ${cat.id === selectedCategory
+                                    ? 'bg-primary/10 border-primary text-primary shadow-sm'
+                                    : 'bg-surface-container-high border-transparent text-on-surface-variant hover:bg-surface-variant'
+                                    }`}
+                            >
+                                {cat.name}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Fixed Sorting Tool Section */}
+                    <div className="flex-shrink-0 pl-3 pr-2 sm:px-4 border-l border-outline-variant/20 flex items-center gap-1 sm:gap-2 bg-gradient-to-l from-background/90 to-transparent">
+                        <span className="material-symbols-outlined text-primary text-lg sm:text-xl">sort</span>
                         <select
                             value={sortOrder}
                             onChange={(e) => setSortOrder(e.target.value)}
-                            className="bg-surface-variant text-sm font-bold rounded-lg px-3 py-2 outline-none border-none text-on-surface cursor-pointer"
+                            className="bg-transparent text-[11px] sm:text-sm font-bold outline-none border-none text-on-surface cursor-pointer py-2"
                         >
-                            <option value="">Popularity</option>
-                            <option value="product_name">Name (A-Z)</option>
-                            <option value="-product_name">Name (Z-A)</option>
-                            <option value="nutriscore_score">Nutri-Score (Best First)</option>
-                            <option value="-nutriscore_score">Nutri-Score (Worst First)</option>
+                            <option value="">Popular</option>
+                            <option value="product_name">A-Z</option>
+                            <option value="-product_name">Z-A</option>
+                            <option value="nutriscore_score">Best Score</option>
                         </select>
                     </div>
                 </div>
