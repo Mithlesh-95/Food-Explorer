@@ -2,8 +2,9 @@
 
 **A Premium Food Discovery & Nutrition Tracking Application**
 
+> **Live Demo:** [https://food-explorer-mithlesh.vercel.app](https://food-explorer-mithlesh.vercel.app)  
+> **Repository:** [https://github.com/Mithlesh-95/Food-Explorer.git](https://github.com/Mithlesh-95/Food-Explorer.git)  
 > **Time Taken:** 5 Days  
-> **Repository:** [https://github.com/Mithlesh-95/Food-Explorer.git](https://github.com/Mithlesh-95/Food-Explorer.git)
 
 ---
 
