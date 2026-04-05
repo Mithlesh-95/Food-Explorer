@@ -85,7 +85,3 @@ APIs like OpenFoodFacts can sometimes be slow or rate-limited. I implemented the
 Using the **Context API** for the Cart/Log was a deliberate choice over heavier libraries like Redux. It provides clean, performant state sharing for this specific use case without adding unnecessary boilerplate or bundle size.
 
 ---
-
-## 👤 Development 
-**Built by Mithlesh**  
-*Completed for the Technical Interview Assignment*
