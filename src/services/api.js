@@ -1,3 +1,5 @@
+const BASE_URL = 'https://world.openfoodfacts.org';
+
 // Mock data used when the OpenFoodFacts API is unreachable.
 const MOCK_CATEGORIES = [
     { name: "Snacks", id: "en:snacks", url: "https://world.openfoodfacts.org/category/snacks.json" },
