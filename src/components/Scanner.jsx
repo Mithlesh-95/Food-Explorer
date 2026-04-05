@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
 import { BrowserMultiFormatReader } from '@zxing/library';
 
 const Scanner = ({ onScanSuccess, onScanFailure }) => {
